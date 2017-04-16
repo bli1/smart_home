@@ -1,0 +1,15 @@
+function [path, ult] = track_path(Dtable, states, appnum)
+    
+    [opt, timeslot, tmp] = size(Dtable);
+    
+    ult = Dtable (end, end, 2);
+    
+    for t = timeslot : 1
+        remain()
+        opt = Dtable (opt);
+    end
+    
+
+
+end
+

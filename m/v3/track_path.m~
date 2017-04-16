@@ -1,0 +1,40 @@
+function [] = track_path(Dtable, B_state, R_state, power, price)
+    appnum = length(power);
+    timeslot = length(price);
+    opt = length(B_state);
+    path_end = 0;
+    chk=1;
+    for s = 1: opt
+        if Dtable(s, timeslot, 1) == 1
+            path_end(chk) = s;
+            chk = chk+1;
+        end
+    end
+    
+    path_num = length(path_end);
+    state_opt = zeros (timeslot, appnum, path_num);
+    battery_t = zeros (timeslot, path_num);
+    battery = zeros (timeslot, path_num);
+
+    operation = zeros (timeslot, appnum, path_num);
+    power_t = zeros (timeslot, path_num);
+    
+    for p = 1: path_num
+        for t = 1:timeslot
+            state_index = path_end(p);
+            state_opt(timeslot - t + 1, : , p) = R_state(state_index, 1:appnum ); 
+            battery(t, p) = B_state (state_index);
+            if t < timeslot 
+                path_end(p) = Dtable(state_index, timeslot - t, 3);
+                operation (timeslot - t, : , p) = R_state(path_end(p), 1:appnum)-R_state(state_index, 1:appnum);
+                battery_t(timeslot-t, p) = B_state(path_end(p))-B_state(state_index);
+                power_t (timeslot - t, p) = operation(timeslot - t, :, p) * power' - battery_t(timeslot - t);
+            end
+        end
+    end
+    
+
+
+
+end
+
