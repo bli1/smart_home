@@ -26,12 +26,12 @@ function [] = mainbs()
     
     Bvar_total = zeros(3, 5);
     Bvar_total(1, :) = [650, 700, 750, 800, 850];
-    Bvar_step = zeros(3, 5);
-    Bvar_step(1, :) = [250, 255, 260, 265, 270];
+    Bvar_step = zeros(3, 3);
+    Bvar_step(1, :) = [200, 250, 300];
     lamda_var = zeros(3, 5);
     lamda_var(1, :) = [80, 85, 90, 95, 100];
     
-    for bs = 1:5
+    for bs = 1:3
         disp('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
         disp('Battery Step ');
         disp(Bvar_step(1, bs));
