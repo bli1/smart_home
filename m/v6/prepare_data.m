@@ -24,25 +24,25 @@ function [ runtime_schedulable, power_schedulable, runtime_nonschedulable, ...
     app(:,4) = a4(start_point:end);
     app(:,5) = a5(start_point:end);
     apptotal = app(:,1) + app(:,2) + app(:,3) + app(:,4) + app(:,5);
-    figure;
-    subplot(3,2,1)
-    plot(1:length(app(:,1)), app(:,1));
-    title('Appliance1')
-    subplot(3,2,2)
-    plot(1:length(app(:,2)), app(:,2));
-    title('Appliance2')
-    subplot(3,2,3)
-    plot(1:length(app(:,3)), app(:,3));
-    title('Appliance3')
-    subplot(3,2,4)
-    plot(1:length(app(:,4)), app(:,4));
-    title('Appliance4')
-    subplot(3,2,5)
-    plot(1:length(app(:,5)), app(:,5));
-    title('Appliance5')
-    subplot(3,2,6)
-    plot(1:length(apptotal), apptotal);
-    title('Total')
+    %figure;
+    %subplot(3,2,1)
+    %plot(1:length(app(:,1)), app(:,1));
+    %title('Appliance1')
+    %subplot(3,2,2)
+    %plot(1:length(app(:,2)), app(:,2));
+    %title('Appliance2')
+    %subplot(3,2,3)
+    %plot(1:length(app(:,3)), app(:,3));
+    %title('Appliance3')
+    %subplot(3,2,4)
+    %plot(1:length(app(:,4)), app(:,4));
+    %title('Appliance4')
+    %subplot(3,2,5)
+    %plot(1:length(app(:,5)), app(:,5));
+    %title('Appliance5')
+    %subplot(3,2,6)
+    %plot(1:length(apptotal), apptotal);
+    %title('Total')
     
     c = zeros(5, 1);
     a = zeros(5, 1);

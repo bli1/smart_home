@@ -32,30 +32,30 @@ function [operation, power_t, battery_t] = track_path(Dtable, B_state, R_state, 
             
         end
 
-        figure;
-        subplot(3,1,1)
-        for i = 1:appnum
-            plot(1:timeslot, operation(:, i, p)+ i)
-            hold on
-        end
-        hold off
-        title('operation')
+        %figure;
+        %subplot(3,1,1)
+        %for i = 1:appnum
+        %    plot(1:timeslot, operation(:, i, p)+ i)
+        %    hold on
+        %end
+        %hold off
+        %title('operation')
         
-        subplot(3, 1, 2)
-        plot(1:timeslot, power_t(:, p))
-        hold on
-        l_average(1:timeslot) = l_avg;
-        upper = l_average(:)+lamda;
-        lower = l_average(:)-lamda;
-        plot(1:timeslot, l_average)
-        plot(1:timeslot, upper, ':')
-        plot(1:timeslot, lower, ':')
-        hold off
-        title('power consumption')
+        %subplot(3, 1, 2)
+        %plot(1:timeslot, power_t(:, p))
+        %hold on
+        %l_average(1:timeslot) = l_avg;
+        %upper = l_average(:)+lamda;
+        %lower = l_average(:)-lamda;
+        %plot(1:timeslot, l_average)
+        %plot(1:timeslot, upper, ':')
+        %plot(1:timeslot, lower, ':')
+        %hold off
+        %title('power consumption')
         
-        subplot(3, 1, 3)
-        plot(1:timeslot, battery_t(:, p))
-        title('battery operation (charge/discharge)')
+        %subplot(3, 1, 3)
+        %plot(1:timeslot, battery_t(:, p))
+        %title('battery operation (charge/discharge)')
         
     end
     
