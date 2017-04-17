@@ -23,15 +23,15 @@ function [] = mainbs()
     [runtime_schedulable, power_schedulable, runtime_nonschedulable, ...
         power_nonschedulable, price] = prepare_data(price);
     
-    
+    battery(4) = 25;
     Bvar_total = zeros(3, 5);
     Bvar_total(1, :) = [650, 700, 750, 800, 850];
-    Bvar_step = zeros(3, 3);
-    Bvar_step(1, :) = [200, 250, 300];
+    Bvar_step = zeros(3, 5);
+    Bvar_step(1, :) = [150, 175, 200, 225, 250];
     lamda_var = zeros(3, 5);
     lamda_var(1, :) = [80, 85, 90, 95, 100];
     
-    for bs = 1:3
+    for bs = 1:length(Bvar_step)
         disp('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
         disp('Battery Step ');
         disp(Bvar_step(1, bs));
