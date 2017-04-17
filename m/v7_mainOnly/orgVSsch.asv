@@ -116,9 +116,8 @@ function [ output_args ] = orgVSsch(Dtable, B_state, ...
     disp(schePrice);
     figure;
     hold on
-    plot(1:12, price,'c*');
-    txt = 'Scheduled price: $0.0390, Original price: $0.0823'  ;
-    title('Real time electricity ')
+    plot(1:24, price,'b--o');
+    title('Real Time Electricity Price')
     xlabel( {'time (h)','Scheduled price: $0.0390, Original price: $0.0823'})
     ylabel('$/kwh')
     hold off
