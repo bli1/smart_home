@@ -1,13 +1,6 @@
 function [ runtime_schedulable, power_schedulable, runtime_nonschedulable, ...
-        power_nonschedulable, price ] = prepare_data(price)
-    %shrink timeslot
-    timeslot = length(price);
-    p = zeros(1, timeslot/2);
-    for i = 1:0.5*timeslot
-        p(i) = 0.5*(price(i*2)+price(i*2-1))/1000;
-        
-    end
-    price = p;
+        power_nonschedulable, price, app ] = prepare_data(price)
+
     %load data
     a1 = csvread('1.csv');
     a2 = csvread('2.csv');
@@ -23,7 +16,7 @@ function [ runtime_schedulable, power_schedulable, runtime_nonschedulable, ...
     app(:,3) = a3(start_point:end);
     app(:,4) = a4(start_point:end);
     app(:,5) = a5(start_point:end);
-    apptotal = app(:,1) + app(:,2) + app(:,3) + app(:,4) + app(:,5);
+    apptotal =  app(:,3) + app(:,4) + app(:,5);
     figure;
     subplot(3,2,1)
     plot(1:length(app(:,1)), app(:,1));
