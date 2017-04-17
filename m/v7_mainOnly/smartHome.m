@@ -1,5 +1,7 @@
-function [best_price, iter] = smartHome(price, runtime_schedulable, power_schedulable, ...
+function [best_price, iter, pltA, B_state_schedulable, R_state_schedulable, power_schedulable, l_avg] = smartHome(price, runtime_schedulable, power_schedulable, ...
         runtime_nonschedulable, power_nonschedulable, battery, lamda)
+    
+    % for plot data (pltA, B_state_schedulable, R_state_schedulable, power_schedulable, price, l_avg, lamda)
 %B_state, Dtable
     tic;
 
@@ -36,7 +38,7 @@ function [best_price, iter] = smartHome(price, runtime_schedulable, power_schedu
 
         %for selecting the worst case
         %input: R(given schedule), Dtable (given schedule), power(to be schedule), runtime(to be schedule), price(always same) 
-        [solution_nonschedulable_wst, l_t_wst, best_price] = gen_Dtable_worstCase(runtime_nonschedulable, ... 
+        [solution_nonschedulable_wst, l_t_wst, best_price, pltA ] = gen_Dtable_worstCase(runtime_nonschedulable, ... 
             price, power_nonschedulable, R_state_nonschedulable, B_state_nonschedulable, ...
             B_opt, B_init, B_end, B_max, lamda, Dtable_schedulable, R_state_schedulable, ...
             runtime_schedulable, power_schedulable, l_avg, appnum_schedulable, B_state_schedulable); 
@@ -71,7 +73,7 @@ function [best_price, iter] = smartHome(price, runtime_schedulable, power_schedu
     %re-schedule the schedulable appliances
     %[Dtable, l_avg] = gen_Dtable(model, runtime, price, power, R_state, B_state, B_opt, B_init, B_end, B_max, lamda); 
 
-    
+    % for plot data (pltA, B_state_schedulable, R_state_schedulable, power_schedulable, price, l_avg, lamda)
    
     toc
 end
