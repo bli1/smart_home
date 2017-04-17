@@ -1,4 +1,4 @@
-function [Bvar_total, Bvar_step, lamda_var] = mainlm(  )
+function [] = mainlm()
     fileid = fopen('price.txt','r');
     formatspec = '%f';
     price = fscanf(fileid, formatspec);

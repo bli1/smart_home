@@ -1,4 +1,4 @@
-function [Bvar_step] = mainbs(  )
+function [] = mainbs()
     fileid = fopen('price.txt','r');
     formatspec = '%f';
     price = fscanf(fileid, formatspec);
