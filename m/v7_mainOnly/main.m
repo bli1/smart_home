@@ -1,5 +1,4 @@
-function [pltA, B_state_schedulable, R_state_schedulable, power_schedulable, ...
-    price, l_avg, lamda, app, best_price, iter] = main(  )
+function [pltA, B_state_schedulable, R_state_schedulable, power_schedulable, price, l_avg, lamda, app, best_price, iter] = main(  )
     fileid = fopen('price.txt','r');
     formatspec = '%f';
     price = fscanf(fileid, formatspec);
