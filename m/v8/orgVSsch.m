@@ -28,6 +28,7 @@ function [ ] = orgVSsch(Dtable, B_state, ...
     for index = 1:length(apptotal)
         orgPrice = orgPrice + price(ceil(index/7200))*apptotal(index)/3600;
     end
+    disp('Original Price');
     disp(orgPrice);
     
     path_num = length(path_end);
@@ -66,60 +67,61 @@ function [ ] = orgVSsch(Dtable, B_state, ...
             end
         end
         hold on
-        plot(x, opplt(1, :)+1, ...
+        subplot(3,1,1)
+        plot(x, opplt(1, :), ...
                 'LineWidth',2)
-        plot(x, opplt(2, :)+2, ...
+        ylabel( 'Appliance1')
+        subplot(3,1,2)
+        plot(x, opplt(2, :), ...
                 'LineWidth',2)
-        plot(x, opplt(3, :)+3, ...
+        ylabel( 'Appliance2')
+        subplot(3,1,3)
+        plot(x, opplt(3, :), ...
                 'LineWidth',2)
-        ylim([0 5])
-        ylabel('Appliance Number')
-        xlabel( 'time (h)')
-        title('Schedulable Appliances Operation')
-        legend('Appliance1', 'Appliance2', 'Appliance3')
+        %ylim([0 5])
+        ylabel( 'Appliance3')
+        xlabel( 'time (hours)')
         hold off
 
         %power
         figure;
         hold on
-        plot(1:timeslot, power_t(:, p), ...
+        plot(1:timeslot, power_t(:, p)/1000, ...
                 'LineWidth',2)
         l_average(1:timeslot) = l_avg;
         upper = l_average(:)+lamda;
         lower = l_average(:)-lamda;
-        plot(1:timeslot, l_average, ':')
-        plot(1:timeslot, upper, ':')
-        plot(1:timeslot, lower, ':')
-        plot(1/7200:1/7200:length(apptotal)/7200, apptotal*2, ...
+        %plot(1:timeslot, l_average, ':')
+        plot(1:timeslot, upper/1000, ':', 'LineWidth',2)
+        plot(1:timeslot, lower/1000, ':', 'LineWidth',2)
+        plot(1/7200:1/7200:length(apptotal)/7200, apptotal*2/1000, ...
                 'LineWidth',2);
-        title('Power Consumption')
-        xlabel( 'time (h)')
-        ylabel('Power Consumption (w)')
-        legend('Scheduled','Average','Upper boundary','Lower boundary','Original')
+        xlabel( 'time (hours)')
+        ylabel('Power Consumption (kw)')
+        legend('Scheduled','Upper boundary','Lower boundary','Original')
         hold off
         
         %battery
         figure;
         hold on
-        plot(1:timeslot, battery_t(:, p), ...
+        plot(1:timeslot, battery_t(:, p)/1000, ...
                 'LineWidth',2);
-        title('Battery Operation (charge - / discharge +)')
-        xlabel( 'time (h)')
-        ylabel('Battery charging/discharging (w)')
-        ylim([-250 300])
+        xlabel( 'time (hours)')
+        ylabel('Battery charging-/discharging+ (kw)')
+        ylim([-0.3 0.3])
         xlim([0 13])
         hold off
         
     end
 
     schePrice = price * power_t;
+    disp('scheduled Price');
     disp(schePrice);
     figure;
     hold on
     plot(1:12, price*1000,'b--o');
-    title('Real Time Electricity Price')
-    xlabel([ {'time (h)','Scheduled price: $' num2str(schePrice) ' Original price: $' num2str(orgPrice)}])
-    ylabel('$/kwh')
+    xlabel('time (hours)')
+    ylabel('Real Time Electricity Price ($/kwh)')
     hold off
 end
 
