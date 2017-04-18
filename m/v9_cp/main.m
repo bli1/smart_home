@@ -14,31 +14,6 @@ function [pltA, B_state_schedulable, R_state_schedulable, power_schedulable, pri
     price = p;
 
 
-
-
-    %%% dimensions of runtime & power must be the same.
-    fileid = fopen('runtime.txt','r');
-    formatspec = '%f';
-    runtime_schedulable = fscanf(fileid, formatspec);
-    runtime_schedulable = runtime_schedulable';
-    
-    fileid = fopen('power.txt','r');
-    formatspec = '%f';
-    power_schedulable = fscanf(fileid, formatspec);
-    power_schedulable = power_schedulable';
-    appnum_schedulable = length(power_schedulable);
-    
-    %non-schedulable appliance input
-    fileid = fopen('runtime_nonSchedulable.txt','r');
-    formatspec = '%f';
-    runtime_nonschedulable = fscanf(fileid, formatspec);
-    runtime_nonschedulable = runtime_nonschedulable';
-    
-    fileid = fopen('power_nonSchedulable.txt','r');
-    formatspec = '%f';
-    power_nonschedulable = fscanf(fileid, formatspec);
-    power_nonschedulable = power_nonschedulable';
-    appnum_nonschedulable = length(power_nonschedulable);
     %%%battery 
     %%%(1)=total_max_cap 
     %%%(2)=init_cap
@@ -53,7 +28,9 @@ function [pltA, B_state_schedulable, R_state_schedulable, power_schedulable, pri
     fileid = fopen('privacy.txt','r');
     formatspec = '%f';
     lamda = fscanf(fileid, formatspec);
-
+    
+    [runtime_schedulable, power_schedulable, runtime_nonschedulable, ...
+        power_nonschedulable, price, app] = prepare_data(price);
     
     [best_price, iter, pltA, B_state_schedulable, R_state_schedulable, ...
         power_schedulable, l_avg, full_power_t_wst_list, best_price_schedulable] = smartHome(price, runtime_schedulable', power_schedulable', ...

@@ -80,7 +80,7 @@ function [ ] = orgVSsch(Dtable, B_state, ...
                 'LineWidth',2)
         %ylim([0 5])
         ylabel( 'Appliance3')
-        xlabel( 'time (hours)')
+        xlabel( 'Hours (h)')
         hold off
 
         %power
@@ -96,7 +96,7 @@ function [ ] = orgVSsch(Dtable, B_state, ...
         plot(1:timeslot, lower/1000, ':', 'LineWidth',2)
         plot(1/7200:1/7200:length(apptotal)/7200, apptotal*2/1000, ...
                 'LineWidth',2);
-        xlabel( 'time (hours)')
+        xlabel( 'Hours (h)')
         ylabel('Power Consumption (kw)')
         legend('Scheduled','Upper boundary','Lower boundary','Original')
         hold off
@@ -106,8 +106,8 @@ function [ ] = orgVSsch(Dtable, B_state, ...
         hold on
         plot(1:timeslot, battery_t(:, p)/1000, ...
                 'LineWidth',2);
-        xlabel( 'time (hours)')
-        ylabel('Battery charging-/discharging+ (kw)')
+        xlabel( 'Hours (h)')
+        ylabel('Battery Charging-/Discharging+ (kw)')
         ylim([-0.3 0.3])
         xlim([0 13])
         hold off
@@ -120,7 +120,7 @@ function [ ] = orgVSsch(Dtable, B_state, ...
     figure;
     hold on
     plot(1:12, price*1000,'b--o');
-    xlabel('time (hours)')
+    xlabel('Hours (h)')
     ylabel('Real Time Electricity Price ($/kwh)')
     hold off
 end
