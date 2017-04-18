@@ -1,4 +1,4 @@
-function [solution_nonschedulable_wst, full_power_t_wst, best_price, solution_schedulable ] = gen_Dtable_worstCase(runtime_nonschedulable, ... 
+function [solution_nonschedulable_wst, full_power_t, best_price, solution_schedulable ] = gen_Dtable_worstCase(runtime_nonschedulable, ... 
         price, power_nonschedulable, R_state_nonschedulable, B_state_nonschedulable, ...
         B_opt, B_init, B_end, B_max, lamda, Dtable_schedulable, ...
         R_state_schedulable, runtime_schedulable, power_schedulable, l_avg, ...
@@ -41,8 +41,8 @@ function [solution_nonschedulable_wst, full_power_t_wst, best_price, solution_sc
     disp(price);
     
     zone = zeros(appnum_nonschedulable, 2);
-    zone(2, :) = [1, 6];
-    zone(1, :) = [7, 12];
+    zone(2, :) = [1, timeslot/2];
+    zone(1, :) = [1+timeslot/2, timeslot];
 
     privacy_wst = zeros(1, appnum_nonschedulable);
     for i = 1: appnum_nonschedulable
