@@ -42,7 +42,7 @@ function [solution_nonschedulable_wst, full_power_t, best_price, solution_schedu
     
     zone = zeros(appnum_nonschedulable, 2);
     zone(2, :) = [1, timeslot/2];
-    zone(1, :) = [1+timeslot/2, timeslot];
+    zone(1, :) = [19, 21];
 
     privacy_wst = zeros(1, appnum_nonschedulable);
     for i = 1: appnum_nonschedulable
