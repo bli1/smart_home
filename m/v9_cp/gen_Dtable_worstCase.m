@@ -41,8 +41,7 @@ function [solution_nonschedulable_wst, full_power_t, best_price, solution_schedu
     disp(price);
     
     zone = zeros(appnum_nonschedulable, 2);
-    zone(2, :) = [1, timeslot/2];
-    zone(1, :) = [19, 21];
+    zone(1, :) = [1, 6];
 
     privacy_wst = zeros(1, appnum_nonschedulable);
     for i = 1: appnum_nonschedulable
@@ -57,7 +56,7 @@ function [solution_nonschedulable_wst, full_power_t, best_price, solution_schedu
         end
     end
     
-    full_power_t = (power_nonschedulable * solution_nonschedulable_wst) + power_t_schedulable';
+    full_power_t =  power_t_schedulable';
     
     full_power_t_wst = max(full_power_t);
     

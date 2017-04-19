@@ -5,6 +5,15 @@ function [pltA, B_state_schedulable, R_state_schedulable, power_schedulable, pri
     price = fscanf(fileid, formatspec);
     price = price';
 
+    %shrink timeslot
+    timeslot = length(price);
+    p = zeros(1, timeslot/2);
+    for i = 1:0.5*timeslot
+        p(i) = 0.5*(price(i*2)+price(i*2-1))/1000;
+        
+    end
+    price = p;
+
     %%% dimensions of runtime & power must be the same.
     fileid = fopen('runtime.txt','r');
     formatspec = '%f';
@@ -54,6 +63,15 @@ disp('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
     formatspec = '%f';
     price = fscanf(fileid, formatspec);
     price = price';
+    
+    %shrink timeslot
+    timeslot = length(price);
+    p = zeros(1, timeslot/2);
+    for i = 1:0.5*timeslot
+        p(i) = 0.5*(price(i*2)+price(i*2-1))/1000;
+        
+    end
+    price = p;
 
     %%% dimensions of runtime & power must be the same.
     fileid = fopen('runtime.txt','r');
