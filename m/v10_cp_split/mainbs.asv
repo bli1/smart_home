@@ -1,4 +1,4 @@
-function [] = mainlm()
+function [] = mainbs()
     fileid = fopen('price.txt','r');
     formatspec = '%f';
     price = fscanf(fileid, formatspec);
@@ -26,9 +26,9 @@ function [] = mainlm()
     Bvar_total = zeros(3, 5);
     Bvar_total(1, :) = [90, 100, 110, 120, 130];
     Bvar_step = zeros(3, 5);
-    Bvar_step(1, :) = [30, 35, 40, 45, 50];
+    Bvar_step(1, :) = [250, 255, 260, 265, 270];
     lamda_var = zeros(3, 5);
-    lamda_var(1, :) = [20, 25, 30, 35, 40];
+    lamda_var(1, :) = [80, 85, 90, 95, 100];
     
     
     disp('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
@@ -86,17 +86,17 @@ function [] = mainlm()
     formatspec = '%f';
     lamda = fscanf(fileid, formatspec);
     
-    for ld = 1:5
-        disp('#############################################################');
-        disp('Lambda');
-        disp(lamda_var(1, ld));
-        lamda = lamda_var(1, ld);
-    	[lamda_var(2, ld), lamda_var(3, ld), pltA, B_state_schedulable, R_state_schedulable, ...
+    for bs = 1:length(Bvar_step)
+        disp('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+        disp('Battery Step ');
+        disp(Bvar_step(1, bs));
+        battery(5) = Bvar_step(1, bs);
+    	[Bvar_step(2, bs), Bvar_step(3, bs), pltA, B_state_schedulable, R_state_schedulable, ...
         	power_schedulable, l_avg, full_power_t_wst_list, best_price_schedulable, ...
 		full_power_t] = smartHome(price, runtime_schedulable, power_schedulable, ...
         	runtime_nonschedulable, power_nonschedulable, battery, lamda);
     end
-    save('lamda_var.txt','lamda_var','-ASCII');
-
+    save('Bvar_step.txt','Bvar_step','-ASCII');
+    
 end
 
