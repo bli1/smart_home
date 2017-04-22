@@ -1,40 +1,21 @@
-function [  ] = mcm( ic16, new, l_avg, index )
-    privacy = 20;
+function [ mcmTest ] = mcm( solution, privacy, l_avg, test )
     power_non_range = [1, 30];
     zone = [1, 6];
+    index = 1000*test;
     
-    mcmTest = zeros(2, index);
+    
+    mcmTest = zeros(1, index);
     for i = 1 : index
         t = randi(zone);
         power_non = randi(power_non_range);
         
-        mcmTest(1, i) = abs(ic16(t)+power_non-l_avg)-privacy;
-        if mcmTest(1, i) < 0 
-            mcmTest(1, i) = 0;
-        end
-        mcmTest(2, i) = abs(new(t)+power_non-l_avg)-privacy;
-        if mcmTest(2, i) < 0 
-            mcmTest(2, i) = 0;
+        mcmTest(i) = abs(solution(t)+power_non-l_avg)-privacy;
+        if mcmTest(i) < 0 
+            mcmTest(i) = 0;
         end
     end
     
-    figure
-    hist(mcmTest(1, :));
-    hold on
-    xlabel({'Statistics Distribution Range of', ...
-        '|Power Consumption(t) - ...Average Power Consumption| - Privacy',...
-        'ICCAD16 Methods (Best Price & Privacy Models)'})
-    ylabel({'Staticstics Results (times/1,000,000 tests)'})
-    hold off
-    
-    figure
-    hist(mcmTest(2, :));
-    hold on 
-    xlabel({'Statistics Distribution Range of', ...
-        '|Power Consumption(t) - Average Power Consumption| - Privacy',...
-        'ICCAD17 Methods (Best Price, Privacy & Non-schedulable Appliance Protection Models)'})
-    ylabel({'Staticstics Results (times/1,000,000 tests)'})
-    hold off
+
     
 end
 
