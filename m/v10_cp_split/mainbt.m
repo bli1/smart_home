@@ -24,7 +24,7 @@ function [] = mainbt()
         power_nonschedulable, price] = prepare_data(price);
     
     Bvar_total = zeros(3, 5);
-    Bvar_total(1, :) = [80, 81, 82, 83, 84];
+    Bvar_total(1, :) = [60, 62, 64, 66, 68];
     Bvar_step = zeros(3, 5);
     Bvar_step(1, :) = [30, 35, 40, 45, 50];
     lamda_var = zeros(3, 5);
