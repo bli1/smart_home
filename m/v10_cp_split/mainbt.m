@@ -51,9 +51,18 @@ function [] = mainbt()
     formatspec = '%f';
     lamda = fscanf(fileid, formatspec);
     
+<<<<<<< HEAD
     Bvar_total = zeros(11, 5);
     Bvar_total(1, :) = [30, 45, 60, 75, 90];
     Bvar_step = zeros(11, 5);
+=======
+    [runtime_schedulable, power_schedulable, runtime_nonschedulable, ...
+        power_nonschedulable, price] = prepare_data(price);
+    
+    Bvar_total = zeros(3, 5);
+    Bvar_total(1, :) = [30, 35, 40, 45, 55];
+    Bvar_step = zeros(3, 5);
+>>>>>>> 9748794dc25d42378b4a69d22e4408afb7a1ce16
     Bvar_step(1, :) = [30, 35, 40, 45, 50];
     lamda_var = zeros(11, 5);
     lamda_var(1, :) = [20, 25, 30, 35, 40];
