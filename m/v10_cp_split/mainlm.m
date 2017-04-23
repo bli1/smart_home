@@ -51,11 +51,11 @@ function [] = mainlm()
     formatspec = '%f';
     lamda = fscanf(fileid, formatspec);
     
-    Bvar_total = zeros(9, 5);
+    Bvar_total = zeros(11, 5);
     Bvar_total(1, :) = [90, 100, 110, 120, 130];
     Bvar_step = zeros(11, 5);
     Bvar_step(1, :) = [30, 35, 40, 45, 50];
-    lamda_var = zeros(9, 5);
+    lamda_var = zeros(11, 5);
     lamda_var(1, :) = [20, 25, 30, 35, 40];
    
     for ld = 1:5
