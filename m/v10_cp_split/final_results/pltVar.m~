@@ -1,0 +1,40 @@
+function [  ] = pltVar( lamda_var  )
+
+    figure
+    hold on
+    box on
+    plot(lamda_var(1, :), lamda_var(2, :), ...
+                'LineWidth',2);
+    plot(lamda_var(1, :), lamda_var(7, :), ...
+                'LineWidth',2);
+    xlabel('Power deviation Boundary');
+    ylabel('Price (dollar/KWh)');
+    legend('ICCAD 16 Price','ICCAD 17 Price')
+
+    hold off
+
+    figure
+    hold on
+    box on
+    plot(lamda_var(1, :), lamda_var(4, :), ...
+                'LineWidth',2);
+    plot(lamda_var(1, :), lamda_var(5, :), ...
+                'LineWidth',2);
+    plot(lamda_var(1, :), lamda_var(6, :), ...
+                'LineWidth',2);
+    plot(lamda_var(1, :), lamda_var(8, :), ...
+                'LineWidth',2);
+    plot(lamda_var(1, :), lamda_var(9, :), ...
+                'LineWidth',2);
+    plot(lamda_var(1, :), lamda_var(9, :), ...
+                'LineWidth',2);
+    
+    xlabel('Power deviation Boundary');
+    ylabel('??');
+    legend('Scheduled','Upper boundary','Lower boundary','Original')
+
+    hold off
+    
+    
+end
+
