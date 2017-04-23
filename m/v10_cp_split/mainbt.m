@@ -52,7 +52,7 @@ function [] = mainbt()
     lamda = fscanf(fileid, formatspec);
     
     Bvar_total = zeros(11, 5);
-    Bvar_total(1, :) = [30, 45, 60, 75, 90];
+    Bvar_total(1, :) = [30, 45, 60, 90, 180];
     Bvar_step = zeros(11, 5);
     Bvar_step(1, :) = [30, 35, 40, 45, 50];
     lamda_var = zeros(11, 5);
