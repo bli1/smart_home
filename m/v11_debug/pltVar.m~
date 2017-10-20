@@ -1,0 +1,20 @@
+function [  ] = pltVar(  )
+
+    figure
+    hold on
+    plot(lamda_var(1, :), lamda_var(2, :));
+    plot(lamda_var(1, :), lamda_var(7, :));
+    xlabel('Power deviation Boundary');
+    ylabel('Price');
+    hold off
+
+    figure
+    hold on
+    plot(bs, bs_price);
+    xlabel('Charging / Discharging Rate');
+    ylabel('Price');
+    hold off
+    
+    
+end
+
